@@ -33,7 +33,7 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden anime-bg">
-      <ParticleBackground />
+      
 
       <div className="orb orb-pink w-72 h-72 -top-20 -left-20" />
       <div className="orb orb-cyan w-96 h-96 -bottom-32 -right-32" />
