@@ -22,8 +22,8 @@ const ParticleBackground = () => {
 
     let animationId: number;
     const stars: Star[] = [];
-    const starCount = 250;
-    const speed = 3;
+    const starCount = 300;
+    const speed = 5;
 
     const resize = () => {
       canvas.width = window.innerWidth;
