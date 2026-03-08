@@ -10,6 +10,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
 import ScrollProgress from "@/components/ScrollProgress";
+import ParticleBackground from "@/components/ParticleBackground";
 
 const SectionDivider = ({ flip = false }: { flip?: boolean }) => (
   <div className={`relative h-24 overflow-hidden ${flip ? "rotate-180" : ""}`}>
@@ -42,6 +43,10 @@ const GridPattern = () => (
 const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden relative">
+      {/* Full-page star background */}
+      <div className="fixed inset-0 z-0">
+        <ParticleBackground />
+      </div>
       <GridPattern />
       <ScrollProgress />
       <Navbar />

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Download, ExternalLink } from "lucide-react";
-import ParticleBackground from "./ParticleBackground";
 
 const roles = ["AI & ML Engineer", "Power BI Developer", "Frontend Developer", "Data Analyst"];
 
@@ -34,7 +33,7 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden anime-bg">
-      <ParticleBackground />
+      
 
       <div className="orb orb-pink w-72 h-72 -top-20 -left-20" />
       <div className="orb orb-cyan w-96 h-96 -bottom-32 -right-32" />
