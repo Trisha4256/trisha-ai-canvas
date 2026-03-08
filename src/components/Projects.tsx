@@ -24,10 +24,6 @@ const projects = [
   {
     icon: User,
     title: "Customized Avatar Builder",
-    subtitle: "Frontend Application",
-  {
-    icon: User,
-    title: "Customized Avatar Builder",
     subtitle: "Vibe Coding Project",
     description: "Interactive avatar customization tool with real-time preview, built using vibe coding techniques and modern frontend technologies.",
     tags: ["Vibe Coding", "HTML", "CSS", "JavaScript"],
