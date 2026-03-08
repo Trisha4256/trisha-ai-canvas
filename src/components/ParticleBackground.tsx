@@ -3,12 +3,15 @@ import { useEffect, useRef } from "react";
 interface Star {
   x: number;
   y: number;
-  z: number;
   size: number;
-  opacity: number;
+  baseOpacity: number;
+  twinkleSpeed: number;
+  twinkleOffset: number;
   r: number;
   g: number;
   b: number;
+  driftX: number;
+  driftY: number;
 }
 
 const ParticleBackground = () => {
@@ -23,7 +26,6 @@ const ParticleBackground = () => {
     let animationId: number;
     const stars: Star[] = [];
     const starCount = 300;
-    const speed = 5;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -32,86 +34,71 @@ const ParticleBackground = () => {
     resize();
     window.addEventListener("resize", resize);
 
-    const makeColor = () => {
-      const isWhite = Math.random() > 0.6;
-      if (isWhite) return { r: 220 + Math.floor(Math.random() * 35), g: 255, b: 220 + Math.floor(Math.random() * 35) };
-      return {
-        r: 50 + Math.floor(Math.random() * 80),
-        g: 180 + Math.floor(Math.random() * 75),
-        b: 50 + Math.floor(Math.random() * 60),
-      };
-    };
-
     for (let i = 0; i < starCount; i++) {
-      const color = makeColor();
+      const isGreen = Math.random() > 0.5;
       stars.push({
-        x: Math.random() * canvas.width - canvas.width / 2,
-        y: Math.random() * canvas.height - canvas.height / 2,
-        z: Math.random() * 1000,
-        size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.8 + 0.2,
-        ...color,
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2.5 + 0.5,
+        baseOpacity: Math.random() * 0.7 + 0.3,
+        twinkleSpeed: Math.random() * 0.02 + 0.005,
+        twinkleOffset: Math.random() * Math.PI * 2,
+        r: isGreen ? 100 + Math.floor(Math.random() * 80) : 220 + Math.floor(Math.random() * 35),
+        g: isGreen ? 200 + Math.floor(Math.random() * 55) : 230 + Math.floor(Math.random() * 25),
+        b: isGreen ? 80 + Math.floor(Math.random() * 60) : 220 + Math.floor(Math.random() * 35),
+        driftX: (Math.random() - 0.5) * 0.15,
+        driftY: (Math.random() - 0.5) * 0.15,
       });
     }
 
-    const animate = () => {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    let time = 0;
 
-      const cx = canvas.width / 2;
-      const cy = canvas.height / 2;
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      time += 1;
 
       stars.forEach((star) => {
-        star.z -= speed;
-        if (star.z <= 0) {
-          star.z = 1000;
-          star.x = Math.random() * canvas.width - cx;
-          star.y = Math.random() * canvas.height - cy;
-          const color = makeColor();
-          star.r = color.r;
-          star.g = color.g;
-          star.b = color.b;
+        // Gentle drift
+        star.x += star.driftX;
+        star.y += star.driftY;
+        if (star.x < 0) star.x = canvas.width;
+        if (star.x > canvas.width) star.x = 0;
+        if (star.y < 0) star.y = canvas.height;
+        if (star.y > canvas.height) star.y = 0;
+
+        // Twinkling
+        const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset);
+        const opacity = star.baseOpacity * (0.5 + 0.5 * twinkle);
+
+        // Soft glow
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${star.r}, ${star.g}, ${star.b}, ${opacity * 0.08})`;
+        ctx.fill();
+
+        // Star core
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${star.r}, ${star.g}, ${star.b}, ${opacity})`;
+        ctx.fill();
+
+        // Cross sparkle on bright stars
+        if (star.size > 1.5 && opacity > 0.6) {
+          const sparkleLen = star.size * 2.5 * opacity;
+          ctx.strokeStyle = `rgba(${star.r}, ${star.g}, ${star.b}, ${opacity * 0.4})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(star.x - sparkleLen, star.y);
+          ctx.lineTo(star.x + sparkleLen, star.y);
+          ctx.moveTo(star.x, star.y - sparkleLen);
+          ctx.lineTo(star.x, star.y + sparkleLen);
+          ctx.stroke();
         }
-
-        const scale = 300 / star.z;
-        const sx = star.x * scale + cx;
-        const sy = star.y * scale + cy;
-        const radius = star.size * scale * 0.5;
-
-        if (sx < 0 || sx > canvas.width || sy < 0 || sy > canvas.height) return;
-
-        const brightness = Math.min(1, (1000 - star.z) / 600) * star.opacity;
-
-        // Trail line
-        const prevZ = star.z + speed * 2;
-        const prevScale = 300 / prevZ;
-        const px = star.x * prevScale + cx;
-        const py = star.y * prevScale + cy;
-        ctx.beginPath();
-        ctx.moveTo(px, py);
-        ctx.lineTo(sx, sy);
-        ctx.strokeStyle = `rgba(${star.r}, ${star.g}, ${star.b}, ${brightness * 0.3})`;
-        ctx.lineWidth = Math.max(radius * 0.5, 0.5);
-        ctx.stroke();
-
-        // Glow
-        ctx.beginPath();
-        ctx.arc(sx, sy, radius * 3, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${star.r}, ${star.g}, ${star.b}, ${brightness * 0.08})`;
-        ctx.fill();
-
-        // Core star
-        ctx.beginPath();
-        ctx.arc(sx, sy, Math.max(radius, 0.8), 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${star.r}, ${star.g}, ${star.b}, ${brightness})`;
-        ctx.fill();
       });
 
       animationId = requestAnimationFrame(animate);
     };
 
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
     animate();
 
     return () => {
