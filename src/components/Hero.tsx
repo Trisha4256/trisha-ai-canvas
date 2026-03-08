@@ -65,7 +65,7 @@ const Hero = () => {
           transition={{ delay: 0.6 }}
           className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10"
         >
-          Senior Undergraduate in CSE (AI & ML) passionate about building
+          Graduate in CSE (AI & ML) passionate about building
           data-driven solutions and intelligent applications.
         </motion.p>
 

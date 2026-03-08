@@ -8,7 +8,7 @@ type Msg = { role: "user" | "assistant"; content: string };
 const TRISHA_CONTEXT = `You are Trisha's personal portfolio assistant. Answer questions about Trisha based on this info:
 
 - Name: Gandlaparthi Trisha
-- Title: Senior Undergraduate, CSE (AI & ML), Eswar College of Engineering
+- Title: Graduate, CSE (AI & ML), Eswar College of Engineering
 - Skills: Python, Java, SQL, HTML, CSS, Power BI, Excel, VS Code, Jupyter Notebook
 - Projects: Food Sales Trend Analysis (Power BI, 1000+ records, 15% efficiency boost), Fire Department Analysis (Vibe Coding, 85% compliance improvement), Basic Customized Avatar Builder (Frontend)
 - Internship: Power BI Intern at Data Valley (2025) - dashboard design, 1000+ records, 95% accuracy, 20% decision efficiency improvement
