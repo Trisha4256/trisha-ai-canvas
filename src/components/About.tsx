@@ -18,8 +18,9 @@ const About = () => {
 
   return (
     <section id="about" className="section-padding relative" ref={ref}>
-      {/* Background orb */}
       <div className="orb orb-pink w-48 h-48 top-10 right-10 opacity-20" />
+      <div className="orb orb-cyan w-36 h-36 bottom-10 left-20 opacity-15" />
+      <div className="orb orb-purple w-28 h-28 top-1/2 left-1/3 opacity-10" />
 
       <div className="container mx-auto relative z-10">
         <motion.div
