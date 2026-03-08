@@ -19,19 +19,9 @@
 
 ---
 
-## 📸 Screenshots
+## 📸 Screenshot
 
-### 🏠 Hero Section
-![Hero Section](screenshots/hero.png)
-
-### 🛠️ Skills Section
-![Skills Section](screenshots/skills.png)
-
-### 📂 Projects Section
-![Projects Section](screenshots/projects.png)
-
-### 📬 Contact Section
-![Contact Section](screenshots/contact.png)
+![Portfolio Preview](screenshots/hero.png)
 
 ---
 
