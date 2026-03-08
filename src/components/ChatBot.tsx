@@ -65,16 +65,14 @@ const ChatBot = () => {
 
   return (
     <>
-      {/* Floating chat button */}
       <button
         onClick={() => setOpen(!open)}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg animate-pulse-glow hover:scale-110 transition-transform"
-        style={{ background: "linear-gradient(135deg, hsl(330 85% 60%), hsl(270 80% 65%))" }}
+        style={{ background: "linear-gradient(135deg, hsl(142 70% 45%), hsl(100 60% 50%))" }}
       >
         {open ? <X className="w-6 h-6 text-foreground" /> : <MessageCircle className="w-6 h-6 text-foreground" />}
       </button>
 
-      {/* Hire Me */}
       <a
         href="#contact"
         className="fixed bottom-6 left-6 z-50 px-5 py-3 rounded-full glass-strong text-primary font-heading font-semibold text-sm hover:glow-border transition-all hidden md:flex items-center gap-2"
@@ -91,15 +89,13 @@ const ChatBot = () => {
             className="fixed bottom-24 right-6 z-50 w-[90vw] max-w-sm glass-strong rounded-2xl overflow-hidden flex flex-col border border-primary/20"
             style={{ height: "min(500px, 70vh)" }}
           >
-            {/* Header */}
-            <div className="p-4 border-b border-border/30" style={{ background: "linear-gradient(135deg, hsl(330 85% 60% / 0.1), hsl(270 80% 65% / 0.1))" }}>
+            <div className="p-4 border-b border-border/30" style={{ background: "linear-gradient(135deg, hsl(142 70% 45% / 0.1), hsl(100 60% 50% / 0.1))" }}>
               <h3 className="font-heading font-bold text-foreground flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-primary" /> Trisha's Assistant
               </h3>
               <p className="text-xs text-muted-foreground">Ask about skills, projects & more</p>
             </div>
 
-            {/* Messages */}
             <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3 scrollbar-hide">
               {messages.map((m, i) => (
                 <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
@@ -109,7 +105,7 @@ const ChatBot = () => {
                         ? "rounded-br-md text-foreground"
                         : "bg-muted text-foreground rounded-bl-md"
                     }`}
-                    style={m.role === "user" ? { background: "linear-gradient(135deg, hsl(330 85% 60%), hsl(270 80% 65%))" } : {}}
+                    style={m.role === "user" ? { background: "linear-gradient(135deg, hsl(142 70% 45%), hsl(100 60% 50%))" } : {}}
                   >
                     {m.content}
                   </div>
@@ -126,7 +122,6 @@ const ChatBot = () => {
               )}
             </div>
 
-            {/* Input */}
             <div className="p-3 border-t border-border/30">
               <div className="flex gap-2">
                 <input
@@ -140,7 +135,7 @@ const ChatBot = () => {
                   onClick={sendMessage}
                   disabled={loading || !input.trim()}
                   className="w-10 h-10 rounded-xl flex items-center justify-center text-foreground disabled:opacity-50 hover:scale-105 transition-transform"
-                  style={{ background: "linear-gradient(135deg, hsl(330 85% 60%), hsl(270 80% 65%))" }}
+                  style={{ background: "linear-gradient(135deg, hsl(142 70% 45%), hsl(100 60% 50%))" }}
                 >
                   <Send className="w-4 h-4" />
                 </button>

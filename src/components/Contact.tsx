@@ -102,16 +102,20 @@ const Contact = () => {
           transition={{ delay: 0.5 }}
           className="flex gap-4 justify-center mt-8"
         >
-          <a href="https://www.linkedin.com/in/g-trisha-448a79333" target="_blank" rel="noopener noreferrer">
-            <Button variant="heroOutline" size="lg">
-              <Linkedin className="w-5 h-5 mr-2" /> LinkedIn
-            </Button>
-          </a>
-          <a href="https://github.com/Trisha4256" target="_blank" rel="noopener noreferrer">
-            <Button variant="heroOutline" size="lg">
-              <Github className="w-5 h-5 mr-2" /> GitHub
-            </Button>
-          </a>
+          <Button
+            variant="heroOutline"
+            size="lg"
+            onClick={() => window.open("https://www.linkedin.com/in/g-trisha-448a79333", "_blank", "noopener,noreferrer")}
+          >
+            <Linkedin className="w-5 h-5 mr-2" /> LinkedIn
+          </Button>
+          <Button
+            variant="heroOutline"
+            size="lg"
+            onClick={() => window.open("https://github.com/Trisha4256", "_blank", "noopener,noreferrer")}
+          >
+            <Github className="w-5 h-5 mr-2" /> GitHub
+          </Button>
         </motion.div>
       </div>
     </section>

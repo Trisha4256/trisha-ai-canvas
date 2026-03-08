@@ -26,8 +26,8 @@ const timeline = [
     institution: "Swami School",
     period: "2020",
     score: "100%",
-    color: "from-neon-yellow to-primary",
-    dotColor: "bg-neon-yellow",
+    color: "from-accent to-primary",
+    dotColor: "bg-accent",
     glowClass: "glow-pink",
   },
 ];
@@ -50,7 +50,7 @@ const Education = () => {
 
         <div className="relative">
           <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px"
-            style={{ background: "linear-gradient(to bottom, hsl(330 85% 60%), hsl(270 80% 65%), hsl(190 90% 50%), transparent)" }}
+            style={{ background: "linear-gradient(to bottom, hsl(142 70% 45%), hsl(100 60% 50%), hsl(160 60% 40%), transparent)" }}
           />
 
           {timeline.map((item, i) => (
