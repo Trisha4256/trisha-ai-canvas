@@ -20,9 +20,12 @@ const Contact = () => {
     }
     setSending(true);
     try {
-      const submissions = JSON.parse(localStorage.getItem("contact_submissions") || "[]");
-      submissions.push({ ...form, timestamp: new Date().toISOString() });
-      localStorage.setItem("contact_submissions", JSON.stringify(submissions));
+      const { error } = await supabase.from("contact_messages").insert({
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      });
+      if (error) throw error;
       toast({ title: "Message sent! ✨", description: "Thanks for reaching out, I'll get back to you soon." });
       setForm({ name: "", email: "", message: "" });
     } catch {
