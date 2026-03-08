@@ -9,22 +9,18 @@ const Footer = () => (
       </p>
 
       <div className="flex items-center gap-4">
-        <a
-          href="https://www.linkedin.com/in/g-trisha-448a79333"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => window.open("https://www.linkedin.com/in/g-trisha-448a79333", "_blank", "noopener,noreferrer")}
           className="text-muted-foreground hover:text-secondary transition-colors"
         >
           <Linkedin className="w-5 h-5" />
-        </a>
-        <a
-          href="https://github.com/Trisha4256"
-          target="_blank"
-          rel="noopener noreferrer"
+        </button>
+        <button
+          onClick={() => window.open("https://github.com/Trisha4256", "_blank", "noopener,noreferrer")}
           className="text-muted-foreground hover:text-accent transition-colors"
         >
           <Github className="w-5 h-5" />
-        </a>
+        </button>
       </div>
 
       <button

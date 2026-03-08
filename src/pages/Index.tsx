@@ -21,9 +21,9 @@ const SectionDivider = ({ flip = false }: { flip?: boolean }) => (
       />
       <defs>
         <linearGradient id="dividerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="hsl(330 85% 60%)" />
-          <stop offset="50%" stopColor="hsl(270 80% 65%)" />
-          <stop offset="100%" stopColor="hsl(190 90% 50%)" />
+          <stop offset="0%" stopColor="hsl(142 70% 45%)" />
+          <stop offset="50%" stopColor="hsl(100 60% 50%)" />
+          <stop offset="100%" stopColor="hsl(160 60% 40%)" />
         </linearGradient>
       </defs>
     </svg>
@@ -33,7 +33,7 @@ const SectionDivider = ({ flip = false }: { flip?: boolean }) => (
 const GridPattern = () => (
   <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
     style={{
-      backgroundImage: `linear-gradient(hsl(330 85% 60%) 1px, transparent 1px), linear-gradient(90deg, hsl(330 85% 60%) 1px, transparent 1px)`,
+      backgroundImage: `linear-gradient(hsl(142 70% 45%) 1px, transparent 1px), linear-gradient(90deg, hsl(142 70% 45%) 1px, transparent 1px)`,
       backgroundSize: "60px 60px",
     }}
   />
@@ -42,9 +42,7 @@ const GridPattern = () => (
 const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden relative">
-      {/* Global grid pattern */}
       <GridPattern />
-
       <ScrollProgress />
       <Navbar />
       <Hero />

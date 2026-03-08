@@ -21,6 +21,13 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/Trisha_Resume.pdf";
+    link.download = "Trisha_Resume.pdf";
+    link.click();
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -46,11 +53,9 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <a href="/Trisha_Resume.pdf" download>
-            <Button variant="glow" size="sm">
-              <Download className="w-4 h-4 mr-1" /> Resume
-            </Button>
-          </a>
+          <Button variant="glow" size="sm" onClick={handleDownload}>
+            <Download className="w-4 h-4 mr-1" /> Resume
+          </Button>
         </div>
 
         <button
@@ -77,11 +82,9 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <a href="/Trisha_Resume.pdf" download>
-            <Button variant="glow" size="sm" className="mt-2 w-full">
-              <Download className="w-4 h-4 mr-1" /> Resume
-            </Button>
-          </a>
+          <Button variant="glow" size="sm" className="mt-2 w-full" onClick={handleDownload}>
+            <Download className="w-4 h-4 mr-1" /> Resume
+          </Button>
         </motion.div>
       )}
     </motion.nav>
