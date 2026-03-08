@@ -73,7 +73,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-4 justify-center relative z-20"
         >
           <a href="#projects">
             <Button variant="hero" size="lg">
@@ -91,7 +91,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="flex gap-4 justify-center mt-8"
+          className="flex gap-4 justify-center mt-8 relative z-20"
         >
           <a
             href="https://www.linkedin.com/in/g-trisha-448a79333"
