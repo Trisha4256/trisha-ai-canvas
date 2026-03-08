@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Download, ExternalLink } from "lucide-react";
-import ParticleBackground from "./ParticleBackground";
 
 const roles = ["AI & ML Engineer", "Power BI Developer", "Frontend Developer", "Data Analyst"];
 
