@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Download, ExternalLink } from "lucide-react";
+import { Download, ExternalLink, Smartphone, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ParticleBackground from "./ParticleBackground";
 
@@ -42,7 +42,7 @@ const Hero = () => {
       <div className="orb orb-cyan w-96 h-96 -bottom-32 -right-32" />
       <div className="orb orb-purple w-64 h-64 top-1/3 right-1/4" />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background z-[1]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background z-[1]" />
 
       <div className="relative z-10 container mx-auto px-4 text-center">
         <motion.div
@@ -56,31 +56,76 @@ const Hero = () => {
           </span>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="text-secondary font-heading text-xl mb-4"
+        {/* Big name box with starry background */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, type: "spring", stiffness: 80 }}
+          className="relative mx-auto max-w-3xl mb-8 rounded-2xl overflow-hidden border border-primary/20"
+          style={{ background: "linear-gradient(135deg, hsl(240 15% 8%), hsl(270 20% 10%), hsl(240 15% 6%))" }}
         >
-          Hi, I'm Trisha 👋
-        </motion.p>
+          {/* Stars inside the box */}
+          <div className="absolute inset-0 overflow-hidden">
+            {Array.from({ length: 40 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute rounded-full bg-foreground"
+                style={{
+                  width: `${Math.random() * 3 + 1}px`,
+                  height: `${Math.random() * 3 + 1}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  opacity: Math.random() * 0.7 + 0.2,
+                  animation: `sparkle ${Math.random() * 3 + 2}s ease-in-out infinite`,
+                  animationDelay: `${Math.random() * 3}s`,
+                }}
+              />
+            ))}
+            {/* Nebula glow effects inside box */}
+            <div className="absolute w-40 h-40 rounded-full top-0 left-1/4 opacity-20"
+              style={{ background: "radial-gradient(circle, hsl(330 85% 60% / 0.6), transparent)", filter: "blur(30px)" }} />
+            <div className="absolute w-32 h-32 rounded-full bottom-0 right-1/4 opacity-20"
+              style={{ background: "radial-gradient(circle, hsl(190 90% 50% / 0.6), transparent)", filter: "blur(30px)" }} />
+            <div className="absolute w-24 h-24 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-15"
+              style={{ background: "radial-gradient(circle, hsl(270 80% 65% / 0.6), transparent)", filter: "blur(20px)" }} />
+          </div>
 
-        <motion.h1
+          <div className="relative z-10 py-10 md:py-14 px-6">
+            <p className="text-secondary font-heading text-lg md:text-xl mb-3">Hi, I'm</p>
+            <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-extrabold mb-3 tracking-tight">
+              <span className="text-gradient">TRISHA</span>
+            </h1>
+            <p className="font-heading text-lg md:text-2xl text-foreground/80 mb-2">
+              GANDLAPARTHI
+            </p>
+            <div className="h-px w-24 mx-auto my-4" style={{ background: "linear-gradient(90deg, transparent, hsl(330 85% 60%), hsl(190 90% 50%), transparent)" }} />
+            <p className="text-muted-foreground text-sm md:text-base flex items-center justify-center gap-2">
+              <Monitor className="w-4 h-4 text-secondary" />
+              <span>Web</span>
+              <span className="text-primary">+</span>
+              <Smartphone className="w-4 h-4 text-primary" />
+              <span>Mobile</span>
+              <span className="text-muted-foreground/50">— works everywhere</span>
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+          transition={{ delay: 0.6 }}
+          className="font-heading text-2xl md:text-4xl lg:text-5xl font-bold mb-6"
         >
           <span className="text-foreground">I'm a </span>
           <span className="text-gradient">{text}</span>
           <span className="animate-pulse text-primary">|</span>
-        </motion.h1>
+        </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10"
+          transition={{ delay: 0.8 }}
+          className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-8"
         >
           Graduate in CSE (AI & ML) passionate about building
           data-driven solutions and intelligent applications.
@@ -89,7 +134,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9 }}
+          transition={{ delay: 1 }}
           className="flex flex-col sm:flex-row gap-4 justify-center relative z-20"
         >
           <a href="#projects">
@@ -107,7 +152,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.1 }}
+          transition={{ delay: 1.2 }}
           className="flex gap-4 justify-center mt-8 relative z-20"
         >
           <a
