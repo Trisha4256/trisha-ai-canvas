@@ -9,6 +9,8 @@ const projects = [
     subtitle: "Power BI Dashboard",
     description: "Analyzed 1,000+ records to uncover sales patterns, leading to a 15% improvement in sales efficiency through actionable insights.",
     tags: ["Power BI", "Data Analysis", "Dashboard"],
+    iconColor: "text-primary",
+    borderColor: "hover:border-primary/40",
   },
   {
     icon: Flame,
@@ -16,6 +18,8 @@ const projects = [
     subtitle: "Vibe Coding Project",
     description: "Built an analytical tool achieving 85% compliance tracking improvement and 20% reduction in emergency response delays.",
     tags: ["Vibe Coding", "Analytics", "Compliance"],
+    iconColor: "text-neon-yellow",
+    borderColor: "hover:border-neon-yellow/40",
   },
   {
     icon: User,
@@ -23,6 +27,8 @@ const projects = [
     subtitle: "Frontend Application",
     description: "Interactive avatar customization tool with real-time preview, built with modern frontend technologies.",
     tags: ["HTML", "CSS", "JavaScript", "UI/UX"],
+    iconColor: "text-secondary",
+    borderColor: "hover:border-secondary/40",
   },
 ];
 
@@ -31,8 +37,11 @@ const Projects = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="section-padding" ref={ref}>
-      <div className="container mx-auto">
+    <section id="projects" className="section-padding relative" ref={ref}>
+      <div className="orb orb-pink w-72 h-72 bottom-0 left-0 opacity-15" />
+      <div className="orb orb-cyan w-48 h-48 top-20 right-20 opacity-10" />
+
+      <div className="container mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -45,18 +54,17 @@ const Projects = () => {
           {projects.map((p, i) => (
             <motion.div
               key={p.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
-              className="glass rounded-xl p-6 group hover:glow-border transition-all duration-500 relative overflow-hidden"
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 + i * 0.15, type: "spring" }}
+              className={`anime-card p-6 ${p.borderColor} border border-border/30`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <p.icon className="w-6 h-6 text-primary" />
+                <div className={`w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <p.icon className={`w-6 h-6 ${p.iconColor}`} />
                 </div>
                 <h3 className="font-heading font-bold text-foreground text-lg mb-1">{p.title}</h3>
-                <p className="text-xs text-primary mb-3">{p.subtitle}</p>
+                <p className={`text-xs ${p.iconColor} mb-3 font-medium`}>{p.subtitle}</p>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{p.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {p.tags.map((t) => (
