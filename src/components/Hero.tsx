@@ -100,12 +100,7 @@ const Hero = () => {
             </p>
             <div className="h-px w-24 mx-auto my-4" style={{ background: "linear-gradient(90deg, transparent, hsl(142 70% 45%), hsl(160 60% 40%), transparent)" }} />
             <p className="text-muted-foreground text-sm md:text-base flex items-center justify-center gap-2">
-              <Monitor className="w-4 h-4 text-secondary" />
-              <span>Web</span>
-              <span className="text-primary">+</span>
-              <Smartphone className="w-4 h-4 text-primary" />
-              <span>Mobile</span>
-              <span className="text-muted-foreground/50">— works everywhere</span>
+              📍 <span>Narasaraopet, Andhra Pradesh, India</span>
             </p>
           </div>
         </motion.div>

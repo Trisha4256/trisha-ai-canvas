@@ -3,13 +3,55 @@ import { useRef } from "react";
 import { Award, Trophy, Keyboard, Users } from "lucide-react";
 
 const certificates = [
-  { icon: Award, title: "Generative AI Workshop", year: "2025", color: "text-primary" },
-  { icon: Trophy, title: "AMR Hackmaina 2K25", year: "2025", color: "text-neon-yellow" },
-  { icon: Award, title: "Advance Python Oriented Program", year: "2024", color: "text-secondary" },
-  { icon: Keyboard, title: "Typewriting English Lower (30 WPM)", year: "2021", color: "text-accent" },
-  { icon: Keyboard, title: "Typewriting English Higher (45 WPM)", year: "2022", color: "text-neon-green" },
-  { icon: Users, title: "Member of Student Activity Council", year: "", color: "text-primary" },
-  { icon: Trophy, title: "Multiple Quizzes & Competitions", year: "", color: "text-neon-yellow" },
+  {
+    icon: Award,
+    title: "Generative AI Workshop",
+    year: "2025",
+    color: "text-primary",
+    description: "Completed an intensive hands-on workshop on Generative AI covering LLMs, prompt engineering, and real-world AI application development.",
+  },
+  {
+    icon: Trophy,
+    title: "AMR Hackmaina 2K25",
+    year: "2025",
+    color: "text-accent",
+    description: "Participated in a competitive hackathon event, collaborating with peers to build innovative tech solutions under time constraints.",
+  },
+  {
+    icon: Award,
+    title: "Advance Python Oriented Program",
+    year: "2024",
+    color: "text-secondary",
+    description: "Mastered advanced Python concepts including OOP, data structures, decorators, and building scalable applications.",
+  },
+  {
+    icon: Keyboard,
+    title: "Typewriting English Lower (30 WPM)",
+    year: "2021",
+    color: "text-accent",
+    description: "Certified in English typewriting at lower grade with a speed of 30 words per minute, demonstrating typing proficiency.",
+  },
+  {
+    icon: Keyboard,
+    title: "Typewriting English Higher (45 WPM)",
+    year: "2022",
+    color: "text-primary",
+    description: "Achieved higher grade certification with 45 WPM, showcasing improved speed and accuracy in professional typing.",
+  },
+  {
+    icon: Users,
+    title: "Member of Student Activity Council",
+    year: "",
+    color: "text-primary",
+    description: "Active member organizing college events, workshops, and cultural activities, developing leadership and teamwork skills.",
+  },
+  {
+    icon: Trophy,
+    title: "Multiple Quizzes & Competitions",
+    year: "",
+    color: "text-accent",
+    description: "Participated and won multiple inter-college quizzes and technical competitions, showcasing knowledge across various domains.",
+  },
 ];
 
 const Certificates = () => {
@@ -38,16 +80,19 @@ const Certificates = () => {
               className="anime-card p-5 group cursor-default"
             >
               <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
-              <div className="relative z-10 flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                  <c.icon className={`w-5 h-5 ${c.color}`} />
+              <div className="relative z-10">
+                <div className="flex items-start gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <c.icon className={`w-5 h-5 ${c.color}`} />
+                  </div>
+                  <div>
+                    <h3 className="font-heading font-semibold text-foreground text-sm">{c.title}</h3>
+                    {c.year && (
+                      <span className="text-xs text-muted-foreground">{c.year}</span>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-heading font-semibold text-foreground text-sm">{c.title}</h3>
-                  {c.year && (
-                    <span className="text-xs text-muted-foreground">{c.year}</span>
-                  )}
-                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed mt-2">{c.description}</p>
               </div>
             </motion.div>
           ))}

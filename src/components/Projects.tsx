@@ -7,7 +7,7 @@ const projects = [
     icon: BarChart3,
     title: "Food Sales Trend Analysis",
     subtitle: "Power BI Dashboard",
-    description: "Analyzed 1,000+ records to uncover sales patterns, leading to a 15% improvement in sales efficiency through actionable insights.",
+    description: "Analyzed 1,000+ records of food sales data to uncover hidden patterns and seasonal trends. Built interactive Power BI dashboards with drill-down capabilities, leading to a 15% improvement in sales efficiency through data-driven decision making.",
     tags: ["Power BI", "Data Analysis", "Dashboard"],
     iconColor: "text-primary",
     borderColor: "hover:border-primary/40",
@@ -16,16 +16,16 @@ const projects = [
     icon: Flame,
     title: "Fire Department Analysis",
     subtitle: "Vibe Coding Project",
-    description: "Built an analytical tool achieving 85% compliance tracking improvement and 20% reduction in emergency response delays.",
+    description: "Developed a comprehensive analytical tool for fire department operations using vibe coding techniques. Achieved 85% compliance tracking improvement and reduced emergency response delays by 20% through real-time data monitoring and automated reporting systems.",
     tags: ["Vibe Coding", "Analytics", "Compliance"],
-    iconColor: "text-neon-yellow",
-    borderColor: "hover:border-neon-yellow/40",
+    iconColor: "text-accent",
+    borderColor: "hover:border-accent/40",
   },
   {
     icon: User,
     title: "Customized Avatar Builder",
     subtitle: "Vibe Coding Project",
-    description: "Interactive avatar customization tool with real-time preview, built using vibe coding techniques and modern frontend technologies.",
+    description: "Built an interactive avatar customization platform allowing users to personalize characters in real-time. Features include dynamic skin tones, hairstyles, accessories, and outfit selections powered by modern frontend technologies and creative vibe coding approaches.",
     tags: ["Vibe Coding", "HTML", "CSS", "JavaScript"],
     iconColor: "text-secondary",
     borderColor: "hover:border-secondary/40",
@@ -60,7 +60,7 @@ const Projects = () => {
               className={`anime-card p-6 ${p.borderColor} border border-border/30`}
             >
               <div className="relative z-10">
-                <div className={`w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <p.icon className={`w-6 h-6 ${p.iconColor}`} />
                 </div>
                 <h3 className="font-heading font-bold text-foreground text-lg mb-1">{p.title}</h3>
