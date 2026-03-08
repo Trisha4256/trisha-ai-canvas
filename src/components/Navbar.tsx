@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -20,13 +19,6 @@ const Navbar = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/Trisha_Resume.pdf";
-    link.download = "Trisha_Resume.pdf";
-    link.click();
-  };
 
   return (
     <motion.nav
@@ -53,9 +45,13 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <Button variant="glow" size="sm" onClick={handleDownload}>
-            <Download className="w-4 h-4 mr-1" /> Resume
-          </Button>
+          <a
+            href="/Trisha_Resume.pdf"
+            download="Trisha_Resume.pdf"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-9 px-3 bg-primary text-primary-foreground shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 transition-all duration-300"
+          >
+            <Download className="w-4 h-4" /> Resume
+          </a>
         </div>
 
         <button
@@ -82,9 +78,13 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <Button variant="glow" size="sm" className="mt-2 w-full" onClick={handleDownload}>
-            <Download className="w-4 h-4 mr-1" /> Resume
-          </Button>
+          <a
+            href="/Trisha_Resume.pdf"
+            download="Trisha_Resume.pdf"
+            className="mt-2 w-full inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-9 px-3 bg-primary text-primary-foreground shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-105 transition-all duration-300"
+          >
+            <Download className="w-4 h-4" /> Resume
+          </a>
         </motion.div>
       )}
     </motion.nav>

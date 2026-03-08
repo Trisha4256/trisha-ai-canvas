@@ -62,33 +62,21 @@ const Contact = () => {
           <div className="relative z-10 space-y-5">
             <div>
               <label className="text-sm text-muted-foreground mb-1 block">Name</label>
-              <input
-                type="text"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
+              <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg bg-muted border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
-                placeholder="Your name"
-              />
+                placeholder="Your name" />
             </div>
             <div>
               <label className="text-sm text-muted-foreground mb-1 block">Email</label>
-              <input
-                type="email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+              <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg bg-muted border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
-                placeholder="your@email.com"
-              />
+                placeholder="your@email.com" />
             </div>
             <div>
               <label className="text-sm text-muted-foreground mb-1 block">Message</label>
-              <textarea
-                rows={4}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
+              <textarea rows={4} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className="w-full px-4 py-3 rounded-lg bg-muted border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all resize-none"
-                placeholder="Your message..."
-              />
+                placeholder="Your message..." />
             </div>
             <Button type="submit" variant="hero" size="lg" className="w-full" disabled={sending}>
               <Send className="w-4 h-4 mr-2" /> {sending ? "Sending..." : "Send Message"}
@@ -102,20 +90,22 @@ const Contact = () => {
           transition={{ delay: 0.5 }}
           className="flex gap-4 justify-center mt-8"
         >
-          <Button
-            variant="heroOutline"
-            size="lg"
-            onClick={() => window.open("https://www.linkedin.com/in/g-trisha-448a79333", "_blank", "noopener,noreferrer")}
+          <a
+            href="https://www.linkedin.com/in/g-trisha-448a79333"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-11 px-8 border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary transition-all duration-300"
           >
-            <Linkedin className="w-5 h-5 mr-2" /> LinkedIn
-          </Button>
-          <Button
-            variant="heroOutline"
-            size="lg"
-            onClick={() => window.open("https://github.com/Trisha4256", "_blank", "noopener,noreferrer")}
+            <Linkedin className="w-5 h-5" /> LinkedIn
+          </a>
+          <a
+            href="https://github.com/Trisha4256"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-11 px-8 border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary transition-all duration-300"
           >
-            <Github className="w-5 h-5 mr-2" /> GitHub
-          </Button>
+            <Github className="w-5 h-5" /> GitHub
+          </a>
         </motion.div>
       </div>
     </section>
